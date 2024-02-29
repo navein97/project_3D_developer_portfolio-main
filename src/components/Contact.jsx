@@ -1,3 +1,12 @@
+// EarthCanvas: The component renders your 3D Earth animation.
+// SectionWrapper: Your Higher-Order Component(HOC) for consistent section design.
+// React Hooks: useRef, useState
+// Framer Motion: For animations.
+// emailjs: To integrate email sending functionality.
+// styles (from ../styles): Your external styles.
+// slideIn (from ../utils/motion): Your custom Framer Motion animation helper.
+// useRef: Create Reference to indirectly access a certain data
+
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -14,9 +23,10 @@ const Contact = () => {
     email: "",
     message: "",
   });
-
+// Manages the form state (name, email, message), and the loading state for the button.
   const [loading, setLoading] = useState(false);
 
+  // handleChange updates values in 'form' state 
   const handleChange = (e) => {
     const { target } = e;
     const { name, value } = target;
@@ -27,12 +37,15 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+    // handleSubmit sends the form data using emailjs
+    const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true);   // Handle loading state management.
 
+    // ... your EmailJS service details 
     emailjs
       .send(
+        // A method to access environment variables I've likely set up for the EmailJS API keys.
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         {
@@ -42,8 +55,10 @@ const Contact = () => {
           to_email: "naveinthiran97@gmail.com",
           message: form.message,
         },
+        //this import is used to hide your EmailJS keys.
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       )
+      // Handle successful sending
       .then(
         () => {
           setLoading(false);
@@ -55,6 +70,7 @@ const Contact = () => {
             message: "",
           });
         },
+        // Handle sending error 
         (error) => {
           setLoading(false);
           console.error(error);
@@ -68,7 +84,8 @@ const Contact = () => {
     <div
       className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
     >
-      <motion.div
+      {/* Section Content Animation */}
+      <motion.div 
         variants={slideIn("left", "tween", 0.2, 1)}
         className='flex-[0.75] bg-black-100 p-8 rounded-2xl'
       >
@@ -123,6 +140,7 @@ const Contact = () => {
         </form>
       </motion.div>
 
+      {/* Earth animation */}
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
         className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'

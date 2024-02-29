@@ -1,16 +1,18 @@
 import React from "react";
-import Tilt from "react-tilt";
-import { motion } from "framer-motion";
+import Tilt from "react-tilt"; //Tilt effect
+import { motion } from "framer-motion"; //Manage animation 
 
-import { styles } from "../styles";
-import { services } from "../constants";
-import { SectionWrapper } from "../hoc";
-import { fadeIn, textVariant } from "../utils/motion";
+import { styles } from "../styles"; //Your own styling and data.
+import { services } from "../constants"; 
+import { SectionWrapper } from "../hoc"; //Your custom styling HOC Higher-Order Component 
+import { fadeIn, textVariant } from "../utils/motion"; //Animation helper
 
 const ServiceCard = ({ index, title, icon }) => (
   <Tilt className='xs:w-[250px] w-full'>
-    <motion.div
+    <motion.div 
+    // apply fade-in animation 
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
+      // apply styling
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
     >
       <div
@@ -38,6 +40,7 @@ const ServiceCard = ({ index, title, icon }) => (
 const About = () => {
   return (
     <>
+    {/* introduction text animation */}
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
@@ -55,6 +58,7 @@ const About = () => {
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>
+        {/* Iterates over your services data to dynamically generate ServiceCard components. */}
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}

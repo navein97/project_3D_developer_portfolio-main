@@ -6,12 +6,13 @@ import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState(""); // Tracks active nav item
+  const [toggle, setToggle] = useState(false);// Tracks menu toggle state
+  const [scrolled, setScrolled] = useState(false);// Tracks scroll position for navbar styling
 
   useEffect(() => {
     const handleScroll = () => {
+      // checks scroll position, sets 'scrolled' state
       const scrollTop = window.scrollY;
       if (scrollTop > 100) {
         setScrolled(true);
@@ -30,6 +31,7 @@ const Navbar = () => {
       className={`${
         styles.paddingX
       } w-full flex items-center py-5 fixed top-0 z-20 ${
+      // Navbar container with dynamic styling based on scroll state 
         scrolled ? "bg-primary" : "bg-transparent"
       }`}
     >
@@ -49,6 +51,7 @@ const Navbar = () => {
           </p>
         </Link>
 
+        {/* Desktop Links */}
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           {navLinks.map((nav) => (
             <li
@@ -63,6 +66,7 @@ const Navbar = () => {
           ))}
         </ul>
 
+        {/* Mobile toggle Menu */}
         <div className='sm:hidden flex flex-1 justify-end items-center'>
           <img
             src={toggle ? close : menu}
