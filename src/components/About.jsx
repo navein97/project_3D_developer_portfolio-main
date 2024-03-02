@@ -1,5 +1,5 @@
 import React from "react";
-import Tilt from "react-tilt"; //Tilt effect
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion"; //Manage animation 
 
 import { styles } from "../styles"; //Your own styling and data.
