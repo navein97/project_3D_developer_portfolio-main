@@ -200,7 +200,7 @@ const projects = [
   {
     name: "Navein's Merch",
     description:
-      "Unleash your individuality with our incredible collection of streetwear and accessories! From bold graphic tees to comfy hoodies, statement jewelry to eye-catching bags, we've got everything you need to curate a look that speaks your truth. Explore our curated collection and find pieces that express your unique vibe.",
+      "Unleash your individuality with our incredible collection of streetwear and accessories! From bold graphic tees to comfy hoodies, statement jewelry to eye-catching bags.",
     tags: [
       {
         name: "tailwind",
