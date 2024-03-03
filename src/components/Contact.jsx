@@ -39,15 +39,14 @@ const Contact = () => {
 
     // handleSubmit sends the form data using emailjs
     const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent browser to load.
     setLoading(true);   // Handle loading state management.
 
     // ... your EmailJS service details 
     emailjs
       .send(
-        // A method to access environment variables I've likely set up for the EmailJS API keys.
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        'service_3og0h6d',  // service id
+        'template_x3pvsr4', // template id
         {
           from_name: form.name,
           to_name: "Naveinthiran",
@@ -55,8 +54,7 @@ const Contact = () => {
           to_email: "naveinthiran97@gmail.com",
           message: form.message,
         },
-        //this import is used to hide your EmailJS keys.
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        'f7_7g0LsBwzvdNM60' // public key
       )
       // Handle successful sending
       .then(
